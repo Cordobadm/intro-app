@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import reactDom from "react-dom";
+import { Link } from "react-router-dom";
 import Badge from "../component/Badge";
-import BadgeForm from "../component/BadgeForm";
 import BadgeHero from "../component/BadgeHero";
 
-export default function BadgeEdit(props) {
-  const badgeId = props.match.badgeId;
+export default function BadgeDetails(props) {
+  const badgeId = props.match.params.badgeId;
   const [state, setState] = useState({
     form: {
       firstName: "",
@@ -32,30 +32,8 @@ export default function BadgeEdit(props) {
       console.warn(error);
     }
   };
-  const handleChange = (evento) => {
-    setState({
-      form: {
-        ...state.form,
-        [evento.target.name]: evento.target.value,
-      },
-    });
-  };
 
-  const handleSubmit = async (evento) => {
-    evento.preventDefault();
-    try {
-      fetch(`http://localhost:3004/data?id=${badgeId}`, {
-        method: "PUT",
-        body: JSON.stringify(state.form),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-
+  
   return (
     <>
       <div>
@@ -65,20 +43,19 @@ export default function BadgeEdit(props) {
         <div className="row mb-3">
           <div className="col-6">
             <Badge
-              firstName={state.form.firstName || "Firste_Name"}
-              lastName={state.form.lastName || "Last_Name"}
-              infoJob={state.form.infoJob || "Info_Job"}
-              twitter={state.form.twitter || "Twitter"}
+              firstName={state.form.firstName}
+              lastName={state.form.lastName}
+              infoJob={state.form.infoJob}
+              twitter={state.form.twitter}
               email={state.form.email}
               avatarUrl="http:\/\/0.gravatar.com\/avatar\/cd699361e60392e6c2e729ed9fa9a133"
             />
           </div>
           <div className="col-6">
-            <BadgeForm
-              handleChange={handleChange}
-              form_values={state.form}
-              handleSubmit={handleSubmit}
-            />
+              <h3>Acciones</h3>
+              <Link to={`/badges/${badgeId}/edit`} className="btn btn-Info mb-3">Editar</Link>
+              <button className="btn btn-danger">Eliminar</button>
+              {reactDom.createPortal(<h3>Soy un Portal</h3>, document.getElementById("modal"))}
           </div>
         </div>
       </div>

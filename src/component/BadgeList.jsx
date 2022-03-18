@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/badge_list.css";
 import Gravatar from "./Gravatar";
 
@@ -21,9 +22,9 @@ export default function BadgeList({ data }) {
                 alt="Avatar"
               /> */}
               <div>
-                <div>
+                <Link to={`/badges/${badge.id}`} className="text-reset text-decoration-none">
                   {badge.firstName} {badge.lastName}
-                </div>
+                </Link>
                 <div>{badge.jobTitle}</div>
                 <div className="Badge__twitter">@{badge.twitter}</div>
               </div>
