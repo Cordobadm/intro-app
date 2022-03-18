@@ -1,0 +1,48 @@
+.Home{
+    width: 100%;
+    min-height: calc(100vh -60px);
+    background-image: url("../images/stars.png");
+    background-repeat: repeat;
+    color: #ffffff;
+
+    /* display:grid;
+    grid-template: 1fr / 100px 300px 1fr 100px;
+    grid-template-areas: ".text image.";
+    align-items:center;
+    justify-items:center;
+    
+    */
+}
+
+
+/* .col-img{
+    grid-area: image;
+}
+
+.col-img img{
+    width: 100%;
+}
+
+col.text{
+    margin-bottom:20px;
+} 
+
+body{
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    background-color: url("../images/stars.png") #1b1b25;
+    background-repeat: repeat;
+
+} */
+
+.logo_rolling{
+    height: 100px;
+    width: 400px;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
